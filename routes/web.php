@@ -28,14 +28,11 @@ Route::middleware('auth')->group(function () {
 
     // Product routes
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/products/{product}/studio', [ProductController::class, 'studio'])->name('products.studio');
-    Route::post('/products/{product}/sessions/{session}/save', [ProductController::class, 'saveSession'])->name('products.session.save');
-    Route::post('/products/check-url', [ProductController::class, 'checkUrl'])->name('products.check-url');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-    // Studio routes (legacy - will phase out)
-    Route::get('/studio', [StudioController::class, 'index'])->name('studio.index');
-    Route::get('/studio/products/{id}', [StudioController::class, 'show'])->name('studio.show');
-    Route::get('/studio/gallery', [StudioController::class, 'gallery'])->name('studio.gallery');
+    // Studio routes
+    Route::get('/studio/{session}', [StudioController::class, 'session'])->name('studio.session');
 
     // Share routes (authenticated)
     Route::post('/products/{product}/share', [ShareController::class, 'create'])->name('products.share');
