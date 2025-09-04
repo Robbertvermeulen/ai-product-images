@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->json('metadata')->nullable();
             $table->timestamps();
-            
+
             $table->index('token');
             $table->index('short_code');
             $table->index('expires_at');

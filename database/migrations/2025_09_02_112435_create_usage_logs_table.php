@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('credits_used', 8, 2)->nullable();
             $table->decimal('cost', 8, 4)->nullable();
             $table->timestamps();
-            
+
             $table->index(['organization_id', 'created_at']);
             $table->index(['user_id', 'created_at']);
             $table->index('action_type');

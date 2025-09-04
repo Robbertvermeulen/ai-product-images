@@ -22,7 +22,7 @@ return new class extends Migration
             $table->json('product_analysis')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
-            
+
             $table->index('organization_id');
             $table->index('status');
         });

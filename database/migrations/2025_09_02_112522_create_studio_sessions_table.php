@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('session_data')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
-            
+
             $table->index(['product_id', 'user_id']);
             $table->index('status');
             $table->index('expires_at');

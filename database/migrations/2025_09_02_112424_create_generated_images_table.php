@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('generation_time_ms')->nullable();
             $table->decimal('cost', 8, 4)->nullable();
             $table->timestamps();
-            
+
             $table->index('session_id');
             $table->index('product_id');
             $table->index('user_id');

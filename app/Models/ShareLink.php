@@ -43,7 +43,7 @@ class ShareLink extends Model
     {
         return $this->belongsTo(GeneratedImage::class);
     }
-    
+
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

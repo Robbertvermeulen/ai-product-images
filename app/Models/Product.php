@@ -44,6 +44,11 @@ class Product extends Model
         return $this->hasMany(GeneratedImage::class);
     }
 
+    public function productImages(): HasMany
+    {
+        return $this->hasMany(ProductImage::class)->orderBy('order');
+    }
+
     public function getImageCount(): int
     {
         return count($this->original_images ?? []);
