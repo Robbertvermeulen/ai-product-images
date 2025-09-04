@@ -14,6 +14,7 @@ class ShareLink extends Model
 
     protected $fillable = [
         'generated_image_id',
+        'product_id',
         'created_by',
         'token',
         'short_code',
@@ -41,6 +42,11 @@ class ShareLink extends Model
     public function generatedImage(): BelongsTo
     {
         return $this->belongsTo(GeneratedImage::class);
+    }
+    
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
     }
 
     public function creator(): BelongsTo

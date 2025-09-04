@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StudioController;
+use App\Http\Controllers\ShareController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,6 +36,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/studio', [StudioController::class, 'index'])->name('studio.index');
     Route::get('/studio/products/{id}', [StudioController::class, 'show'])->name('studio.show');
     Route::get('/studio/gallery', [StudioController::class, 'gallery'])->name('studio.gallery');
+    
+    // Share routes (authenticated)
+    Route::post('/products/{product}/share', [ShareController::class, 'create'])->name('products.share');
 });
+
+// Public share routes
+Route::get('/share/{shortCode}', [ShareController::class, 'show'])->name('share.show');
+Route::get('/share/{shortCode}/download', [ShareController::class, 'download'])->name('share.download');
 
 require __DIR__.'/auth.php';

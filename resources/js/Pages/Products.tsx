@@ -1,6 +1,7 @@
 import { Head, Link } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Package, Plus, Clock, Image, ExternalLink, ChevronRight } from 'lucide-react';
+import { Package, Plus, Clock, Image, ExternalLink, ChevronRight, Share2 } from 'lucide-react';
+import ShareButton from '@/Components/Studio/ShareButton';
 
 interface Product {
     id: string;
@@ -110,15 +111,24 @@ export default function Products({ products }: ProductsProps) {
 
                                         {/* Actions */}
                                         <div className="flex items-center justify-between">
-                                            <a
-                                                href={product.source_url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-xs text-gray-500 hover:text-[#FF4D00] flex items-center gap-1"
-                                            >
-                                                <ExternalLink className="w-3 h-3" />
-                                                View Source
-                                            </a>
+                                            <div className="flex items-center gap-2">
+                                                <a
+                                                    href={product.source_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-xs text-gray-500 hover:text-[#FF4D00] flex items-center gap-1"
+                                                >
+                                                    <ExternalLink className="w-3 h-3" />
+                                                    View Source
+                                                </a>
+                                                {product.generated_images_count > 0 && (
+                                                    <ShareButton 
+                                                        productId={product.id} 
+                                                        productName={product.name}
+                                                        size="sm"
+                                                    />
+                                                )}
+                                            </div>
                                             <Link
                                                 href={`/products/${product.id}/studio`}
                                                 className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#FF4D00] text-white text-sm rounded-lg hover:bg-[#E64400] transition-colors"
